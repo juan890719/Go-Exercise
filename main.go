@@ -2,48 +2,11 @@ package main
 
 import "fmt"
 
+var n int
+
 type person struct {
 	name string
 	age  uint
-}
-
-func pluseOneYear(p *person) {
-	p.age = p.age + 1 // 等同於(*p).age = (*p).age + 1
-}
-
-func arrayPointerAdd1(array *[5]int) {
-	for i := 0; i < len(array); i++ {
-		(*array)[i] = (*array)[i] + 1
-	}
-}
-
-func arraySort(array []int) {
-	for i := 0; i < len(array); i++ {
-		if i == len(array)-1 {
-			break
-		}
-		for j := i + 1; j < len(array); j++ {
-			if array[i] > array[j] {
-				v1 := array[i]
-				array[i] = array[j]
-				array[j] = v1
-			} else {
-				continue
-			}
-		}
-	}
-	for key, value := range array {
-		fmt.Printf("array[%d] = %d\n", key, value)
-	}
-}
-
-func beChain(something string) string {
-	return something + "啊，你快變成懲戒的鎖鏈"
-}
-
-func calc(num1 int, num2 int) (sum int, diff int) {
-	sum, diff = num1+num2, num1-num2
-	return
 }
 
 func main() {
@@ -216,4 +179,10 @@ func main() {
 	fmt.Println(minlun)  // &{Minlun 22}
 	fmt.Println(&minlun) // 指標：0x1400000e030
 	fmt.Println(*minlun) // {Minlun 22}
+
+	// 全域變數n
+	n = 5
+	fmt.Println(n)
+	double()
+	fmt.Println(n)
 }
