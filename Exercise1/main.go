@@ -2,6 +2,21 @@ package main
 
 import "fmt"
 
+type person struct {
+	name string
+	age  uint
+}
+
+func pluseOneYear(p *person) {
+	p.age = p.age + 1 // 等同於(*p).age = (*p).age + 1
+}
+
+func arrayPointerAdd1(array *[5]int) {
+	for i := 0; i < len(array); i++ {
+		(*array)[i] = (*array)[i] + 1
+	}
+}
+
 func arraySort(array []int) {
 	for i := 0; i < len(array); i++ {
 		if i == len(array)-1 {
@@ -154,4 +169,50 @@ func main() {
 	// exercise2 由小到到大排序一個整數陣列
 	exerciseArray := [...]int{3, 1, 2, 5, 1}
 	arraySort(exerciseArray[:])
+
+	// pointer
+	var p *int
+	p = &num
+	fmt.Println(p, " : ", *p)
+
+	// array不是指標
+	array1 := [5]int{1, 3, 4, 2, 5}
+	arrayPointerAdd1(&array1)
+	for _, v := range array1 {
+		fmt.Print(v, " ")
+	}
+	fmt.Println()
+
+	// type struct 定義型態別名
+	var sakura person
+	sakura.name = "小櫻"
+	sakura.age = 10
+	fmt.Println(sakura)
+	fmt.Printf("%T\n", sakura)
+
+	juan := person{
+		name: "Huang Juan",
+		age:  21,
+	}
+	fmt.Println(juan)
+
+	// 不使用type, 直接用struct宣告
+	jong := struct {
+		name string
+		age  uint
+	}{
+		name: "Jong",
+		age:  21,
+	}
+	fmt.Println(jong)
+	pluseOneYear(&sakura)
+	fmt.Println(sakura)
+
+	// 用new()宣告一個struct的指標變數
+	minlun := new(person)
+	minlun.name = "Minlun"
+	minlun.age = 22
+	fmt.Println(minlun)  // &{Minlun 22}
+	fmt.Println(&minlun) // 指標：0x1400000e030
+	fmt.Println(*minlun) // {Minlun 22}
 }
