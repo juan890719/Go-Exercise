@@ -2,6 +2,26 @@ package main
 
 import "fmt"
 
+func arraySort(array []int) {
+	for i := 0; i < len(array); i++ {
+		if i == len(array)-1 {
+			break
+		}
+		for j := i + 1; j < len(array); j++ {
+			if array[i] > array[j] {
+				v1 := array[i]
+				array[i] = array[j]
+				array[j] = v1
+			} else {
+				continue
+			}
+		}
+	}
+	for key, value := range array {
+		fmt.Printf("array[%d] = %d\n", key, value)
+	}
+}
+
 func beChain(something string) string {
 	return something + "啊，你快變成懲戒的鎖鏈"
 }
@@ -48,13 +68,12 @@ func main() {
 		fmt.Printf("%d ", i)
 	}
 
-	fmt.Println()
-	fmt.Println(beChain("水"))
+	fmt.Println("\n" + beChain("水"))
 
 	sum, diff := calc(6, 4)
-	fmt.Printf("%d\n%d", sum, diff)
-	fmt.Println()
+	fmt.Printf("%d\n%d\n", sum, diff)
 
+	// Array
 	// var food [6]string
 	// food[0] = "Juan"
 	// food[1] = "Wei"
@@ -74,8 +93,7 @@ func main() {
 
 	jelly := [...]string{"黃絹", "吳承蓉", "吳敏綸"}
 	for k, v := range jelly {
-		fmt.Printf("jelly[%d] = %s", k, v)
-		fmt.Println()
+		fmt.Printf("jelly[%d] = %s\n", k, v)
 	}
 
 	const length = 3
@@ -83,4 +101,57 @@ func main() {
 	for _, v := range hey {
 		fmt.Println(v)
 	}
+
+	// Slice
+	slice1 := food[0:3]
+	fmt.Printf("slice1's capacity: %d\n", cap(slice1))
+	fmt.Printf("slice's length: %d\n", len(slice1))
+
+	slice2 := make([]string, 3, 5)
+	slice2[0] = "hey"
+	slice2[1] = "hello"
+	slice2[2] = "mello"
+
+	slice3 := []string{}
+	slice3 = append(slice3, "oh")
+	slice3 = append(slice3, "my")
+	slice3 = append(slice3, "god")
+
+	// Map
+	tall1 := make(map[string]int)
+	tall1["Juan"] = 155
+	tall1["Jong"] = 170
+	tall1["Minlun"] = 154
+
+	tall2 := map[string]int{
+		"Juan":   155,
+		"Jong":   170,
+		"Minlun": 154,
+	}
+	// 第一個值val是應的value，第二個值ok是表示此key->value是否存在的布林值
+	val, ok := tall2["Jong"]
+	fmt.Println(val, ok)
+	val, ok = tall2["Jack"]
+	fmt.Println(val, ok)
+
+	for k, v := range tall2 {
+		fmt.Printf("%s的身高是%d\n", k, v)
+	}
+
+	delete(tall2, "Juan")
+	for k := range tall2 {
+		fmt.Println(k)
+	}
+
+	// exercise1 利用迴圈印出九九乘法表
+	for i := 2; i < 10; i++ {
+		for j := 2; j < 10; j++ {
+			fmt.Printf("%d X %d = %d\t", j, i, j*i)
+		}
+		fmt.Println()
+	}
+
+	// exercise2 由小到到大排序一個整數陣列
+	exerciseArray := [...]int{3, 1, 2, 5, 1}
+	arraySort(exerciseArray[:])
 }
