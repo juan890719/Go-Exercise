@@ -1,7 +1,9 @@
 package main
 
-// Go內建的套件，處理格式化相關的工作（format）
-import "fmt"
+import (
+	// Go內建的套件，處理格式化相關的工作（format）
+	"fmt"
+)
 
 var n int
 
@@ -49,7 +51,7 @@ func main() {
 
 	fmt.Println("\n" + beChain("水"))
 
-	sum, diff := calc(6, 4)
+	sum, diff := calculate(6, 4)
 	fmt.Printf("%d\n%d\n", sum, diff)
 
 	// Array

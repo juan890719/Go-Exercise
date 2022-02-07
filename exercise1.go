@@ -35,10 +35,10 @@ func arraySort(array []int) {
 }
 
 func beChain(something string) string {
-	return something + "啊，你快變成懲戒的鎖鏈"
+	return something + "啊, 你快變成懲戒的鎖鏈"
 }
 
-func calc(num1 int, num2 int) (sum int, diff int) {
+func calculate(num1 int, num2 int) (sum int, diff int) {
 	sum, diff = num1+num2, num1-num2
 	return
 }
