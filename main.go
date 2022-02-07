@@ -1,5 +1,6 @@
 package main
 
+// Go內建的套件，處理格式化相關的工作（format）
 import "fmt"
 
 var n int
@@ -185,4 +186,22 @@ func main() {
 	fmt.Println(n)
 	double()
 	fmt.Println(n)
+
+	// methods
+	printPerso()
+
+	// myInt type
+	printAbsoulteNum()
+
+	// geometry interface
+	printRetangleArea()
+
+	// myList use Go's sort interface
+	printSortMyList()
+
+	// 空介面，泛型
+	genericNum := 2
+	genericStr := "Hey"
+	myPrint(genericNum)
+	myPrint(genericStr)
 }

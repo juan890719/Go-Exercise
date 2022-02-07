@@ -23,9 +23,7 @@ func arraySort(array []int) {
 		}
 		for j := i + 1; j < len(array); j++ {
 			if array[i] > array[j] {
-				v1 := array[i]
-				array[i] = array[j]
-				array[j] = v1
+				array[i], array[j] = array[j], array[i]
 			} else {
 				continue
 			}
